@@ -1,0 +1,22 @@
+{
+  "name": "container",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.6.5",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  }
+}
