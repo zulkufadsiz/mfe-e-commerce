@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:products": "cd packages/products && pnpm run dev:products",
+    "start:cart": "cd packages/cart && pnpm run dev:cart",
+    "start:container": "cd packages/container && pnpm run start:dev"
   },
   "keywords": [],
   "author": "",

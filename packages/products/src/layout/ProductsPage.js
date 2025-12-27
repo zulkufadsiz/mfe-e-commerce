@@ -17,7 +17,7 @@ const theme = createTheme({
   },
 });
 
-const App = () => {
+const ProductsPage = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -26,4 +26,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default ProductsPage;

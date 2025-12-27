@@ -1,33 +1,25 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const deps = require('../package.json').dependencies;
 
 module.exports = {
     mode: 'development',
-    entry: './src/index',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[contenthash].js',
-        clean: true,
-    },
     devServer: {
-        port: 8081,
+        port: 8080,
         historyApiFallback: true,
-        hot: true,
     },
-    resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    output: {
+        publicPath: 'http://localhost:8080/',
     },
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-react', '@babel/preset-env'],
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
                     },
                 },
             },
@@ -38,19 +30,19 @@ module.exports = {
         ],
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: './public/index.html',
-        }),
         new ModuleFederationPlugin({
-            name: 'products',
-            filename: 'remoteEntry.js',
-            exposes: {
-                './ProductList': './src/layout/ProductsPage',
+            name: 'container',
+            remotes: {
+                products: 'products@http://localhost:8081/remoteEntry.js',
+                cart: 'cart@http://localhost:8082/remoteEntry.js',
             },
             shared: {
                 react: { singleton: true },
                 'react-dom': { singleton: true },
             },
+        }),
+        new HtmlWebpackPlugin({
+              template: './public/index.html',
         }),
     ],
 };
