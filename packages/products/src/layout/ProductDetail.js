@@ -213,7 +213,7 @@ const ProductDetail = ({ productId, onBack }) => {
                   label={product.category}
                   sx={{
                     mb: 2,
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    background: 'linear-gradient(135deg, #2563eb 0%, #0891b2 100%)',
                     color: 'white',
                     fontWeight: 600,
                     textTransform: 'capitalize',
@@ -250,7 +250,7 @@ const ProductDetail = ({ productId, onBack }) => {
                   sx={{
                     fontWeight: 800,
                     mb: 3,
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    background: 'linear-gradient(135deg, #2563eb 0%, #0891b2 100%)',
                     backgroundClip: 'text',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
@@ -321,7 +321,7 @@ const ProductDetail = ({ productId, onBack }) => {
                     py: 1.5,
                     fontSize: '1.1rem',
                     fontWeight: 600,
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    background: 'linear-gradient(135deg, #2563eb 0%, #0891b2 100%)',
                     borderRadius: 2,
                     textTransform: 'capitalize',
                     '&:hover': {

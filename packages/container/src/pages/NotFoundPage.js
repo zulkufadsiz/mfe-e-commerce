@@ -31,7 +31,7 @@ const NotFoundPage = () => {
           <ErrorOutlineIcon
             sx={{
               fontSize: 120,
-              color: '#667eea',
+              color: '#2563eb',
               mb: 2,
             }}
           />
@@ -40,7 +40,7 @@ const NotFoundPage = () => {
             sx={{
               fontSize: '6rem',
               fontWeight: 800,
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              background: 'linear-gradient(135deg, #2563eb 0%, #0891b2 100%)',
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -76,7 +76,7 @@ const NotFoundPage = () => {
               px: 4,
               py: 1.5,
               fontWeight: 600,
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              background: 'linear-gradient(135deg, #2563eb 0%, #0891b2 100%)',
               borderRadius: 2,
               textTransform: 'capitalize',
               '&:hover': {

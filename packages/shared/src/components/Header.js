@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   AppBar,
   Toolbar,
@@ -17,18 +17,14 @@ import {
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import HomeIcon from '@mui/icons-material/Home';
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const Header = () => {
+const Header = ({ cartItemCount = 3 }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [anchorEl, setAnchorEl] = useState(null);
-
-  // This would be replaced with actual cart count from context/state
-  const cartItemCount = 3;
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -48,14 +44,13 @@ const Header = () => {
   const navItems = [
     { label: 'Home', path: '/', icon: <HomeIcon /> },
     { label: 'Products', path: '/products', icon: <StorefrontIcon /> },
-    { label: 'Dashboard', path: '/dashboard', icon: <DashboardIcon /> },
   ];
 
   return (
     <AppBar
       position="sticky"
       sx={{
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: 'linear-gradient(135deg, #2563eb 0%, #0891b2 100%)',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
       }}
     >

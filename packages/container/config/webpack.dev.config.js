@@ -35,10 +35,14 @@ module.exports = {
             remotes: {
                 products: 'products@http://localhost:8081/remoteEntry.js',
                 cart: 'cart@http://localhost:8082/remoteEntry.js',
+                dashboard: 'dashboard@http://localhost:8083/remoteEntry.js',
+                shared: 'shared@http://localhost:8084/remoteEntry.js',
             },
             shared: {
                 react: { singleton: true },
                 'react-dom': { singleton: true },
+                'react-router-dom': { singleton: true },
+                vue: { singleton: true },
             },
         }),
         new HtmlWebpackPlugin({

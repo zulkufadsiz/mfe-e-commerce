@@ -100,7 +100,7 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
                     textTransform: 'capitalize',
                     fontSize: '0.7rem',
                     height: 20,
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    background: 'linear-gradient(135deg, #2563eb 0%, #0891b2 100%)',
                     color: 'white',
                   }}
                 />
@@ -127,7 +127,7 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
                   variant="h6"
                   sx={{
                     fontWeight: 700,
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    background: 'linear-gradient(135deg, #2563eb 0%, #0891b2 100%)',
                     backgroundClip: 'text',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',

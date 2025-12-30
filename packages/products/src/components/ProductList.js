@@ -75,7 +75,7 @@ const ProductList = ({ onProductClick }) => {
                 sx={{
                   fontWeight: 800,
                   mb: 1,
-                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  background: 'linear-gradient(135deg, #2563eb 0%, #0891b2 100%)',
                   backgroundClip: 'text',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
@@ -264,7 +264,7 @@ const ProductList = ({ onProductClick }) => {
                     transition: 'all 0.3s ease',
                   },
                   '& .MuiPaginationItem-root.Mui-selected': {
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    background: 'linear-gradient(135deg, #2563eb 0%, #0891b2 100%)',
                     boxShadow: '0 4px 15px rgba(102, 126, 234, 0.4)',
                   },
                 }}
