@@ -17,11 +17,11 @@ const theme = createTheme({
   },
 });
 
-const ProductsPage = () => {
+const ProductsPage = ({ onProductClick }) => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <ProductList />
+      <ProductList onProductClick={onProductClick} />
     </ThemeProvider>
   );
 };

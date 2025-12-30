@@ -1,9 +1,16 @@
 import React, { Suspense, lazy } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Box, CircularProgress } from '@mui/material';
 
 const RemoteProductsPage = lazy(() => import('products/ProductList'));
-console.log('RemoteProductsPage:', RemoteProductsPage);
+
 const ProductsPage = () => {
+  const navigate = useNavigate();
+
+  const handleProductClick = (productId) => {
+    navigate(`/products/${productId}`);
+  };
+
   return (
     <Suspense
       fallback={
@@ -20,7 +27,7 @@ const ProductsPage = () => {
         </Box>
       }
     >
-      <RemoteProductsPage />
+      <RemoteProductsPage onProductClick={handleProductClick} />
     </Suspense>
   );
 };

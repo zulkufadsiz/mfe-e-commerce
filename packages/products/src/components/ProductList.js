@@ -20,7 +20,7 @@ import ProductItem from './ProductItem';
 const CATEGORIES = ['electronics', 'jewelery', 'men\'s clothing', 'women\'s clothing'];
 const ITEMS_PER_PAGE = 8;
 
-const ProductList = () => {
+const ProductList = ({ onProductClick }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const { products, loading, error } = useFetchProducts(selectedCategory || null);
@@ -48,6 +48,12 @@ const ProductList = () => {
   const handleAddToCart = (product) => {
     console.log('Added to cart:', product);
     // TODO: Integrate with global cart state/context
+  };
+
+  const handleProductClick = (productId) => {
+    if (onProductClick) {
+      onProductClick(productId);
+    }
   };
 
   return (
@@ -220,7 +226,11 @@ const ProductList = () => {
                   }
                 }}
               >
-                <ProductItem product={product} onAddToCart={handleAddToCart} />
+                <ProductItem 
+                  product={product} 
+                  onAddToCart={handleAddToCart}
+                  onProductClick={handleProductClick}
+                />
               </Grid>
             ))}
           </Grid>

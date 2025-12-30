@@ -29,13 +29,15 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
  * @param {string} product.description - Product description
  * @param {Object} product.rating - Rating object with rate and count
  * @param {Function} onAddToCart - Callback when add to cart is clicked
+ * @param {Function} onProductClick - Callback when product card is clicked
  */
-const ProductItem = ({ product, onAddToCart }) => {
+const ProductItem = ({ product, onAddToCart, onProductClick }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState('');
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
     if (onAddToCart) {
       onAddToCart(product);
     }
@@ -52,6 +54,17 @@ const ProductItem = ({ product, onAddToCart }) => {
 
   const handleCloseNotification = () => {
     setShowNotification(false);
+  };
+
+  const handleViewDetails = (e) => {
+    e.stopPropagation();
+    console.log('View Details clicked, productId:', product.id);
+    console.log('onProductClick function:', onProductClick);
+    if (onProductClick) {
+      onProductClick(product.id);
+    } else {
+      console.warn('onProductClick is not defined');
+    }
   };
 
   return (
@@ -256,6 +269,32 @@ const ProductItem = ({ product, onAddToCart }) => {
               }}
             >
               Add to Cart
+            </Button>
+
+            {/* View Details Button */}
+            <Button
+              variant="outlined"
+              fullWidth
+              size="medium"
+              onClick={handleViewDetails}
+              sx={{
+                mt: 1.5,
+                borderRadius: 1.5,
+                fontWeight: 600,
+                textTransform: 'capitalize',
+                borderColor: '#667eea',
+                color: '#667eea',
+                borderWidth: 2,
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  borderWidth: 2,
+                  borderColor: '#764ba2',
+                  backgroundColor: 'rgba(102, 126, 234, 0.05)',
+                  transform: 'translateY(-2px)',
+                },
+              }}
+            >
+              View Details
             </Button>
           </Box>
         </CardActions>
