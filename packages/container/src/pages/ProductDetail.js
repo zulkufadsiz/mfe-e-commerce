@@ -1,18 +1,15 @@
-import React, { Suspense, lazy, useState } from 'react';
+import React, { Suspense, lazy } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Box, CircularProgress } from '@mui/material';
 
-const RemoteProductList = lazy(() => import('products/ProductList'));
 const RemoteProductDetail = lazy(() => import('products/ProductDetail'));
 
-const ProductsPage = () => {
-  const [selectedProductId, setSelectedProductId] = useState(null);
-
-  const handleProductClick = (productId) => {
-    setSelectedProductId(productId);
-  };
+const ProductDetail = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const handleBack = () => {
-    setSelectedProductId(null);
+    navigate('/products');
   };
 
   return (
@@ -31,13 +28,9 @@ const ProductsPage = () => {
         </Box>
       }
     >
-      {selectedProductId ? (
-        <RemoteProductDetail productId={selectedProductId} onBack={handleBack} />
-      ) : (
-        <RemoteProductList onProductClick={handleProductClick} />
-      )}
+      <RemoteProductDetail productId={id} onBack={handleBack} />
     </Suspense>
   );
 };
 
-export default ProductsPage;
+export default ProductDetail;

@@ -46,6 +46,7 @@ module.exports = {
             filename: 'remoteEntry.js',
             exposes: {
                 './ProductList': './src/layout/ProductsPage',
+                './ProductDetail': './src/layout/ProductDetail',
             },
             shared: {
                 react: { singleton: true },
