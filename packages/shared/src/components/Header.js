@@ -17,9 +17,11 @@ import {
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import HomeIcon from '@mui/icons-material/Home';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const Header = ({ cartItemCount = 3 }) => {
+const Header = ({ cartItemCount = 3, user, onLogout }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const theme = useTheme();
@@ -142,6 +144,7 @@ const Header = ({ cartItemCount = 3 }) => {
             color="inherit"
             onClick={() => navigate('/cart')}
             sx={{
+              mr: 1,
               backgroundColor: isActive('/cart') ? 'rgba(255, 255, 255, 0.2)' : 'transparent',
               '&:hover': {
                 backgroundColor: 'rgba(255, 255, 255, 0.15)',
@@ -152,6 +155,53 @@ const Header = ({ cartItemCount = 3 }) => {
               <ShoppingCartIcon />
             </Badge>
           </IconButton>
+
+          {/* Auth Buttons */}
+          {user ? (
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Typography variant="body2" sx={{ display: { xs: 'none', sm: 'block' } }}>
+                {user.name || user.email}
+              </Typography>
+              <Button
+                startIcon={<LogoutIcon />}
+                onClick={() => {
+                  if (onLogout) {
+                    onLogout();
+                  } else {
+                    localStorage.removeItem('user');
+                    window.location.href = '/login';
+                  }
+                }}
+                variant="outlined"
+                sx={{
+                  color: 'white',
+                  borderColor: 'rgba(255, 255, 255, 0.5)',
+                  '&:hover': {
+                    borderColor: 'white',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  },
+                }}
+              >
+                Logout
+              </Button>
+            </Box>
+          ) : (
+            <Button
+              startIcon={<LoginIcon />}
+              onClick={() => navigate('/login')}
+              variant="outlined"
+              sx={{
+                color: 'white',
+                borderColor: 'rgba(255, 255, 255, 0.5)',
+                '&:hover': {
+                  borderColor: 'white',
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                },
+              }}
+            >
+              Login
+            </Button>
+          )}
         </Toolbar>
       </Container>
     </AppBar>
